@@ -1,15 +1,17 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
-import React from "react";
+import { useParams } from "next/navigation";
+
+import PostDetails from "./_components/PostDetails";
+import PostActions from "./_components/PostActions";
 
 const posts = () => {
-  const currentPath = usePathname();
-  const searchParams = useSearchParams();
+  const { id } = useParams();
 
   return (
-    <div>
-      {currentPath} + {searchParams}
+    <div className='flex flex-col md:flex-row gap-6'>
+      <PostDetails id={id.toString()} />
+      <PostActions />
     </div>
   );
 };

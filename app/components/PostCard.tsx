@@ -2,18 +2,15 @@ import { Card, Flex, Inset, Strong, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
-interface PostProps {
-  post: {
-    key: number;
-    title: string;
-    description: string;
-    img: string;
-  };
+interface Post {
+  id: number;
+  title: string;
+  img: string;
 }
 
-const Post: React.FC<PostProps> = ({ post }) => {
+const PostCard = ({ id, img, title }: Post) => {
   return (
-    <Link href={`/post/${post.key}`}>
+    <Link href={`/post/${id}`}>
       <Card
         size={{ initial: "2", md: "5" }}
         style={{ maxWidth: 500, Height: 500 }}
@@ -21,7 +18,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
       >
         <Inset clip='padding-box' side='top' pb='current'>
           <img
-            src={post.img}
+            src={img}
             alt='Bold typography'
             style={{
               display: "block",
@@ -32,11 +29,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
           />
         </Inset>
         <Text as='p' size='3'>
-          <Strong>{post.title}</Strong>
+          <Strong>{title}</Strong>
         </Text>
       </Card>
     </Link>
   );
 };
 
-export default Post;
+export default PostCard;

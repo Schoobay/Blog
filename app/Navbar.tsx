@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Flex } from "@radix-ui/themes";
+import { Card, Container, Flex, Separator } from "@radix-ui/themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -9,18 +9,16 @@ import classnames from "classnames";
 
 const Navbar = () => {
   return (
-    <nav className='px-5'>
-      <Container>
-        {" "}
-        <Flex justify='between'>
-          <div className='gap-3 items-center flex py-2'>
-            <Link href='/'>
-              <FaBlog />
-            </Link>
-            <NavLinks />
-          </div>
-        </Flex>
-      </Container>
+    <nav className='sticky top-0 z-50 bg-white'>
+      <Flex justify='between'>
+        <div className='gap-3 items-center flex py-2 px-5'>
+          <Link href='/' className=''>
+            <FaBlog className='h-8 w-8' />
+          </Link>
+          <NavLinks />
+        </div>
+      </Flex>
+      <Separator size='4' />
     </nav>
   );
 };
